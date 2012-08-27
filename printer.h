@@ -71,6 +71,7 @@ public:
     void reset();
     void setControlParameter(quint8 heatingDots=20, quint8 heatingTime=255, quint8 heatingInterval=250);
     void setSleepTime(quint8 seconds = 0);
+    void setStatus(bool state=true);
 
     void setDoubleWidth(bool state=false);
     void setBold(bool state=false);

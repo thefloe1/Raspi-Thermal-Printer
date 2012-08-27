@@ -4,6 +4,8 @@
 #include <QImage>
 
 #include <iostream>
+#include <unistd.h>
+
 
 Printer::Printer(QObject *parent) :
     QObject(parent)
@@ -21,6 +23,7 @@ bool Printer::open(QString path) {
     port->setFlowControl(FLOW_OFF);
     port->setParity(PAR_NONE);
 
+    usleep(10000);
     return true;
 }
 
@@ -39,16 +42,25 @@ void Printer::write(QString str)
 
 void Printer::init() {
     reset();
+    setStatus(true);
     setControlParameter();
+
     setSleepTime();
     setCodeTable();
     setCharacterSet();
-
+    setBarcodePrintReadable();
 }
 
 void Printer::reset() {
     write(27);
     write(64);
+    usleep(50000);
+}
+
+void Printer::setStatus(bool state) {
+	write(27);
+	write(61);
+	write(state);
 }
 
 void Printer::setControlParameter(quint8 heatingDots, quint8 heatingTime, quint8 heatingInterval) {
@@ -63,6 +75,8 @@ void Printer::setSleepTime(quint8 seconds) {
     write(27);
     write(56);
     write(seconds);
+    usleep(50000);
+    write(0xFF);
 }
 
 void Printer::setDoubleWidth(bool state) {
