@@ -1,3 +1,6 @@
-Trying to write a Qt Class to interface the adafruit thermal printer.
+QT Class for Printing on the Adafruit / Sparkfun Thermal Printer
 
+The Class relies on QImage so without building QT with -qpa option you will need a running X server.
+
+The class was tested on the Raspberry Pi
 
