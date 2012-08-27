@@ -6,6 +6,8 @@
 #include <unistd.h>
 
 
+/* inspired by adafruits library for the arduino, thanks */
+
 Printer::Printer(QObject *parent) :
     QObject(parent)
 {
@@ -257,6 +259,7 @@ void Printer::printImage(QImage img, quint8 threshold) {
         for (int i=0; i<(width*chunkHeight); i++) {
             write(data[rowStart*width + i]);
         }
+        usleep(50000);
     }
 }
 
