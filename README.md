@@ -4,3 +4,11 @@ The Class relies on QImage so without building QT with -qpa option you will need
 
 The class was tested on the Raspberry Pi
 
+Depends On:
+* Qt4
+* qextserialport
+
+Build:
+* qmake
+* make
+
