@@ -1,3 +1,11 @@
+/*****************************************************************
+* Thermal Printer Interface Library based on QT for the Rasp-Pi
+* Based on the Arduino Library from Adafruit
+* using QExtSerialPort
+* Autor: Tobias Floery
+* E-Mail: tobias@floery.net
+***************************************************************/
+
 #include "printer.h"
 
 #include <QImage>
@@ -5,8 +13,6 @@
 #include <iostream>
 #include <unistd.h>
 
-
-/* inspired by adafruits library for the arduino, thanks */
 
 Printer::Printer(QObject *parent) :
     QObject(parent)
@@ -52,7 +58,7 @@ void Printer::init() {
     reset();
     setStatus(true);
     setControlParameter();
-
+    setPrintDensity();
     setSleepTime();
     setCodeTable();
     setCharacterSet();
@@ -96,6 +102,14 @@ void Printer::setDoubleWidth(bool state) {
     write(27);
     write(state?14:20);
 
+}
+
+
+// set the print density and break time
+void Printer::setPrintDensity(quint8 printDensity, quint8 printBreakTime) {
+	write(8);
+	write(35);
+	write((printBreakTime << 5) | printDensity);
 }
 
 // set the used character set

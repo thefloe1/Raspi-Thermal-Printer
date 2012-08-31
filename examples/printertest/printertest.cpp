@@ -1,3 +1,13 @@
+/*****************************************************************
+* Demo Application using all functions from the Library
+* Thermal Printer Interface Library based on QT for the Rasp-Pi
+* Based on the Arduino Library from Adafruit
+* using QExtSerialPort
+* Autor: Tobias Floery
+* E-Mail: tobias@floery.net
+***************************************************************/
+
+
 #include <QtCore/QCoreApplication>
 
 #include <iostream>

@@ -1,3 +1,12 @@
+/*****************************************************************
+* Thermal Printer Interface Library based on QT for the Rasp-Pi
+* Based on the Arduino Library from Adafruit
+* using QExtSerialPort 
+* Autor: Tobias Floery
+* E-Mail: tobias@floery.net
+***************************************************************/
+
+
 #ifndef PRINTER_H
 #define PRINTER_H
 
@@ -68,10 +77,12 @@ public:
     void write(quint8 byte);
     void write(QString str);
 
+    void init();
     void reset();
     void setControlParameter(quint8 heatingDots=20, quint8 heatingTime=255, quint8 heatingInterval=250);
     void setSleepTime(quint8 seconds = 0);
     void setStatus(bool state=true);
+    void setPrintDensity(quint8 printDensity=14, quint8 printBreakTime=4);
 
     void setDoubleWidth(bool state=false);
     void setBold(bool state=false);
@@ -93,7 +104,7 @@ public:
     void setBarcodeHeight(quint8 height=50);
     void setBarCodeWidth(quint8 width=3);
     void printBarcode(QString data, BarcodeType type=UPCA);
-    void init();
+    
     void printImage(QImage img, quint8 threshold=127);
 signals:
     

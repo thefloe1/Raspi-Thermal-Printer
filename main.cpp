@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     }
 
     p->init();
-
+    
     p->write("Printer Test\n");
     
     p->setReverse(true);
@@ -51,8 +51,6 @@ int main(int argc, char *argv[])
     p->setAlign(Printer::LEFT);
    
     p->printBarcode("12345678", Printer::EAN8);
-
-    p->printImage(QImage("./tux.jpg"));
 
     std::cout << "Closing Device" << std::endl;
     p->close();
