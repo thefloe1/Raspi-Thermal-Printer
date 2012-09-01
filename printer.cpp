@@ -107,7 +107,7 @@ void Printer::setDoubleWidth(bool state) {
 
 // set the print density and break time
 void Printer::setPrintDensity(quint8 printDensity, quint8 printBreakTime) {
-	write(8);
+	write(18);
 	write(35);
 	write((printBreakTime << 5) | printDensity);
 }
